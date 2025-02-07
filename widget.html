@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion Music Widget</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #98d3bd, #346753);
+        }
+        .player-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            padding:20px;
+            border-radius: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            
+        }
+        .album-cover {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image: url('https://imgs.search.brave.com/D3Aw9TmIY_Ssm0ck11AjEuhLS3qWIPKljF1Bw4khAcQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjc1/MjU4NDEyL3Bob3Rv/L3JlZHdvb2QtZm9y/ZXN0LmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz0yZThydWJ0/YU5VUUpmNXpHdDN5/UEl3Sk9nSmhCdkZY/eGs5SUxuUXpjQ1ZR/PQ');
+            background-size: cover;
+            background-position: center;
+            animation: spin 4s linear infinite paused;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #7a7a7a;
+        }
+        button:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <div class="album-cover" id="albumCover"></div>
+        <div class="controls">
+            <button id="prevBtn">⏮️</button>
+            <button id="playPauseBtn">▶️</button>
+            <button id="nextBtn">⏭️</button>
+        </div>
+        <audio id="audioPlayer">
+            <source src="nature_sounds.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const audioPlayer = document.getElementById("audioPlayer");
+        const albumCover = document.getElementById("albumCover");
+
+        playPauseBtn.addEventListener("click", function () {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.textContent = "⏸️";
+                albumCover.style.animationPlayState = "running";
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = "▶️";
+                albumCover.style.animationPlayState = "paused";
+            }
+        });
+
+        document.getElementById("prevBtn").addEventListener("click", function () {
+            audioPlayer.currentTime = 0;
+        });
+
+        document.getElementById("nextBtn").addEventListener("click", function () {
+            audioPlayer.currentTime = audioPlayer.duration;
+        });
+    </script>
+
+</body>
+</html>
