@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notion Music Widget</title>
     <style>
+        html,
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 97.75vh;
-            background: linear-gradient(to bottom right, #98d3bd, #346753);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: transparent;
+            height: 100%;
         }
+
         .player-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #ffffff;
-            padding:20px;
+            background: #eeeeee;
+            padding: 20px;
             border-radius: 25px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             width: 320px;
-            
         }
+
         .album-cover {
             width: 100px;
             height: 100px;
@@ -32,15 +35,23 @@
             background-position: center;
             animation: spin 4s linear infinite paused;
         }
+
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
+
         .controls {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         button {
             background: none;
             border: none;
@@ -48,11 +59,13 @@
             cursor: pointer;
             color: #7a7a7a;
         }
+
         button:hover {
             color: #555;
         }
     </style>
 </head>
+
 <body>
 
     <div class="player-container">
@@ -95,4 +108,5 @@
     </script>
 
 </body>
+
 </html>
